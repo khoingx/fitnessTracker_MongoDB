@@ -1,3 +1,14 @@
+// /api/workouts
+// Get last workouts
+//Post workouts
+
+// /api/workouts/id
+// put 
+
+// /api/workouts/range
+// get workout in range
+
+
 const API = {
   async getLastWorkout() {
     const res = await fetch("/api/workouts");
