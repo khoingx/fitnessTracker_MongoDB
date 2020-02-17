@@ -33,23 +33,46 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", { use
 
 // /api/workouts
 // Get last workouts
+app.get("/api/workouts", (req,res) => {
+  db.Workout.find({})
+    .then(dbWorkout => {
+      res.json(dbWorkout);
+    })
+    .catch(err => {
+      res.json(err);
+    });
+});
+
 //Post workouts
+app.post("/api/workouts", ({body}, res) => {
+  db.Workout.create(body)
+    .then(({id}) => db.Workout)
+});
 
 // /api/workouts/id
 // put 
 
 // /api/workouts/range
 // get workout in range
-
-app.post("/submit", ({body}, res) => {
-  User.create(body)
-    .then(dbUser => {
-      res.json(dbUser);
+app.get("/api/workouts", (req,res) => {
+  db.Workout.find({})
+    .then(dbWorkout => {
+      res.json(dbWorkout);
     })
     .catch(err => {
       res.json(err);
     });
 });
+
+// app.post("/submit", ({body}, res) => {
+//   User.create(body)
+//     .then(dbUser => {
+//       res.json(dbUser);
+//     })
+//     .catch(err => {
+//       res.json(err);
+//     });
+// });
 
 
 app.listen(PORT, () => {
