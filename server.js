@@ -2,16 +2,16 @@ const express = require("express");
 const logger = require("morgan");
 const mongoose = require("mongoose");
 
-var seeder = require('mongoose-seeder'),
-    data = require('./seeders/seed');
+// var seeder = require('mongoose-seeder'),
+//     data = require('./seeders/seed');
  
-seeder.seed(data).then(function(dbData) {
-    // The database objects are stored in dbData
-    console.log(dbData);
-}).catch(function(err) {
-    // handle error
-    console.log("error inserting data to db");
-});
+// seeder.seed(data).then(function(dbData) {
+//     // The database objects are stored in dbData
+//     console.log(dbData);
+// }).catch(function(err) {
+//     // handle error
+//     console.log("error inserting data to db");
+// });
 
 const PORT = process.env.PORT || 3000;
 
@@ -54,7 +54,7 @@ app.post("/api/workouts", ({body}, res) => {
 
 // /api/workouts/range
 // get workout in range
-app.get("/api/workouts", (req,res) => {
+app.get("/api/workouts/range", (req,res) => {
   db.Workout.find({})
     .then(dbWorkout => {
       res.json(dbWorkout);
